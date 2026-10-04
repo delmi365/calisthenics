@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>90天徒手健身 · 家中训练计划</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ 首次设置引导 ============ -->
+<div id="onboard" class="onboard">
+  <div class="ob-card">
+    <div class="ob-logo">90</div>
+    <h1>90 天家中徒手健身</h1>
+    <p class="ob-sub">科学分化 · 男女分案 · 训练 + 饮食一体</p>
+
+    <div class="ob-block">
+      <label class="ob-label">你的性别<span>（决定训练容量与饮食方案）</span></label>
+      <div class="ob-gender">
+        <button class="gbtn" data-gender="male">
+          <span class="gicon">♂</span><span class="gtxt">男性</span>
+          <span class="gdesc">上肢推力容量更高 · 含爆发力</span>
+        </button>
+        <button class="gbtn" data-gender="female">
+          <span class="gicon">♀</span><span class="gtxt">女性</span>
+          <span class="gdesc">臀腿容量更高 · 含盆底训练</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="ob-block">
+      <label class="ob-label">主要目标</label>
+      <div class="ob-seg" id="obGoal">
+        <button data-goal="fatloss" class="on">减脂</button>
+        <button data-goal="muscle">增肌</button>
+        <button data-goal="recomp">塑形 / 维持</button>
+      </div>
+    </div>
+
+    <div class="ob-block">
+      <label class="ob-label">训练基础</label>
+      <div class="ob-seg" id="obLevel">
+        <button data-level="0" class="on">零基础</button>
+        <button data-level="1">有基础</button>
+        <button data-level="2">进阶</button>
+      </div>
+    </div>
+
+    <div class="ob-block">
+      <label class="ob-label">身体数据<span>（用于计算热量与蛋白质）</span></label>
+      <div class="ob-row">
+        <div class="field"><input type="number" id="obAge" value="28" inputmode="numeric"><span>岁</span></div>
+        <div class="field"><input type="number" id="obHeight" value="170" inputmode="numeric"><span>cm</span></div>
+        <div class="field"><input type="number" id="obWeight" value="65" step="0.5" inputmode="decimal"><span>kg</span></div>
+      </div>
+    </div>
+
+    <button id="obStart" class="ob-start" disabled>先选择性别 →</button>
+    <p class="ob-tip">数据仅保存在本机浏览器，不会上传</p>
+  </div>
+</div>
+
+<!-- ============ 主界面 ============ -->
+<div id="app" class="hidden">
+  <header class="topbar">
+    <div class="tb-left">
+      <div class="tb-day">第 <b id="tbDayNum">1</b> 天</div>
+      <div class="tb-sub"><span id="tbPhase">阶段一</span> · <span id="tbWeek">第 1 周</span> · <span id="tbWd">周一</span></div>
+    </div>
+    <div class="tb-right">
+      <div class="tb-badge" id="tbBadge">♂ 男性</div>
+      <button class="tb-icon" id="btnSettings" title="设置">⚙</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 今日 -->
+    <section class="page" id="page-today"></section>
+    <!-- 计划 -->
+    <section class="page hidden" id="page-plan"></section>
+    <!-- 饮食 -->
+    <section class="page hidden" id="page-diet"></section>
+    <!-- 进度 -->
+    <section class="page hidden" id="page-progress"></section>
+  </main>
+
+  <nav class="tabbar">
+    <button class="tab on" data-page="today"><span>🏃</span>今日</button>
+    <button class="tab" data-page="plan"><span>📅</span>计划</button>
+    <button class="tab" data-page="diet"><span>🍽</span>饮食</button>
+    <button class="tab" data-page="progress"><span>📈</span>进度</button>
+  </nav>
+</div>
+
+<!-- 休息计时器 -->
+<div id="timer" class="timer hidden">
+  <div class="tm-ring">
+    <svg viewBox="0 0 120 120">
+      <circle class="tm-bg" cx="60" cy="60" r="52"></circle>
+      <circle class="tm-fg" id="tmFg" cx="60" cy="60" r="52"></circle>
+    </svg>
+    <div class="tm-num" id="tmNum">60</div>
+  </div>
+  <div class="tm-label">组间休息</div>
+  <div class="tm-btns">
+    <button data-sec="45">45s</button>
+    <button data-sec="60">60s</button>
+    <button data-sec="90">90s</button>
+    <button data-sec="120">120s</button>
+  </div>
+  <button class="tm-close" id="tmClose">结束休息</button>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="js/data.js"></script>
+<script src="js/pose.js"></script>
+<script src="js/form.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
